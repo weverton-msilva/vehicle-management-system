@@ -59,9 +59,5 @@ def excluir_veiculo():
                 print("Veículo removido!")
                 return
 
-        # Variável para feedback ao usuário
-        encontrado = False
-        
-        if not encontrado:
-            print("Veículo não encontrado!")
-            break
+        print("Veículo não encontrado!")
+        break
