@@ -6,6 +6,7 @@ Projeto simples desenvolvido em Python utilizando terminal.
 - Cadastro de veículos
 - Listagem de veículos
 - Exclusão de veículos
+- Menu interativo no terminal
 
 ## Tecnologias utilizadas
 - Python
