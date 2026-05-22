@@ -1,50 +1,60 @@
-# IMPORTA ARQUIVO DE VEÍCULOS
-import veiculos
+# IMPORTA ARQUIVO DO PROJETO
+import vehicles
 
-
-# FUNÇÃO DE INTRODUÇÃO
-def menu_usuario():
+# FUNÇÃO DE INTERFACE DO USUÁRIO
+def interface_user():
     print()
-    print("=" * 10 + " SISTEMA DE FROTAS " + "=" * 10)
+    print("=" * 10 + " SISTEMA DE VEÍCULOS " + "=" * 10)
 
-    print("[1] Cadastrar veículo")
-    print("[2] Listar Veículos")
-    print("[3] Excluir veículos")
-    print("[4] Sair do sistema")
+    # Dicionário de opções disponíveis
+    options_menu = {
+        1: "Cadastrar veículo",
+        2: "Listar Veículos",
+        3: "Excluir veículos",
+        4: "Sair do sistema"
+    }
+
+    # Imprimir o dicionário de opções
+    for key, value in options_menu.items():
+        print(f"{key} - {value}")
+
+    # Receber e retorna a entrada de dados
     user_menu = input("Opção: ").strip()
-
     return user_menu
 
-    
-# LOOP DO MENU DO USUÁRIO
-while True:
-    user_menu = menu_usuario()
 
-    # Verificar se a entrada foi preenchida
+# INTERFACE E REDIRECIONAMENTO DO USUÁRIO
+while True:
+    user_menu = interface_user()
+
+    # Verificar campo vazio
     if not user_menu:
-        print("Preencha o campo obrigatório!")
+        print("Preencha os campos!")
         continue
 
+    # Verificar a entrada apenas com números
     try:
-        # Converte entrada para inteiro
-        opcao = int(user_menu)
+        option = int(user_menu)
 
-        if opcao not in range(1, 5):
-            print("Opção inválida, tente novamente!")
+        # Verificar número informado
+        if option not in range(1, 5):
+            print("Escolha apenas opções entre 1 e 4")
             continue
 
-        elif opcao == 1:
-            veiculos.cadastrar_veiculos()
-
-        elif opcao == 2:
-            veiculos.listar_veiculos()
-
-        elif opcao == 3:
-            veiculos.excluir_veiculo()
-            
-        elif opcao == 4:
+        # Sair do sistema se entrada for igual a '4'
+        if option == 4:
             print("Saindo do sistema...")
             break
-            
+
+        # Dicionário para as funções
+        options_menu = {
+            1: vehicles.register_vehicles,
+            2: vehicles.list_vehicles,
+            3: vehicles.delete_vehicle
+        }
+
+        # Redirecionar usuário conforme opção
+        options_menu[option]()
+        
     except ValueError:
-        print("Apenas números podem ser preenchidos!")
+        print("Preencha apenas com números informados em tela")
