@@ -1,26 +1,26 @@
 # LISTA DE VEÍCULOS CADASTRADOS
-veiculos_cadastrados = []
+registered_vehicles = []
 
 
 # FUNÇÃO PARA CADASTRAR VEÍCULOS
-def cadastrar_veiculos():
+def register_vehicles():
     while True:
         print()
         print("=" * 10 + " CADASTRO DE VEÍCULO " + "=" * 10)
         
-        nome_veiculo = input("Nome: ").strip()
+        vehicle_name = input("Nome: ").strip()
 
-        if not nome_veiculo:
+        if not vehicle_name:
             print("Preencha o nome do veículo!")
             continue
 
         # Criar um código único para os veículos
-        codigo_veiculo = len(veiculos_cadastrados) + 1
+        vehicle_code = len(registered_vehicles) + 1
 
         # Adicionar informação a lista de veículos
-        veiculos_cadastrados.append({
-            "Código": codigo_veiculo,
-            "Nome": nome_veiculo
+        registered_vehicles.append({
+            "Código": vehicle_code,
+            "Nome": vehicle_name
         })
 
         # Informações de cadastro
@@ -30,32 +30,32 @@ def cadastrar_veiculos():
 
 
 # FUNÇÃO PARA LISTAR VEÍCULOS
-def listar_veiculos():
+def list_vehicles():
     print()
     print("=" * 10 + " LISTA DE VEÍCULOS " + "=" * 10)
 
-    if not veiculos_cadastrados:
+    if not registered_vehicles:
         print("Nenhum veículo cadastrado ainda!")
     else:
-        for veiculo in veiculos_cadastrados:
-            print(f"Código: {veiculo['Código']:<5} Nome: {veiculo['Nome']}")
+        for vehicle in registered_vehicles:
+            print(f"Código: {vehicle['Código']:<5} Nome: {vehicle['Nome']}")
 
 
 # FUNÇÃO PARA EXCLUIR VEÍCULO
-def excluir_veiculo():
+def delete_vehicle():
     while True:
         print()
         print("=" * 10 + " EXCLUIR DE VEÍCULO " + "=" * 10)
 
-        delete_veiculo = input("Nome: ").strip()
+        delete_text = input("Nome: ").strip()
 
-        if not delete_veiculo:
+        if not delete_text:
             print("Preencha o nome do veículo!")
             return
 
-        for veiculo in veiculos_cadastrados:
-            if delete_veiculo == veiculo['Nome']:
-                veiculos_cadastrados.remove(veiculo)
+        for vehicle in registered_vehicles:
+            if delete_text == vehicle['Nome']:
+                registered_vehicles.remove(vehicle)
                 print("Veículo removido!")
                 return
 
