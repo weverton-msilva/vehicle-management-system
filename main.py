@@ -1,6 +1,7 @@
 # IMPORTA ARQUIVO DO PROJETO
 import vehicles
 
+
 # FUNÇÃO DE INTERFACE DO USUÁRIO
 def interface_user():
     print()
@@ -50,11 +51,11 @@ while True:
         options_menu = {
             1: vehicles.register_vehicles,
             2: vehicles.list_vehicles,
-            3: vehicles.delete_vehicle
+            3: vehicles.delete_vehicle,
         }
 
         # Redirecionar usuário conforme opção
         options_menu[option]()
-        
+
     except ValueError:
         print("Preencha apenas com números informados em tela")

@@ -7,11 +7,30 @@ def register_vehicles():
     while True:
         print()
         print("=" * 10 + " CADASTRO DE VEÍCULO " + "=" * 10)
-        
-        vehicle_name = input("Nome: ").strip()
 
+        vehicle_name = input("Nome: ").strip()
+        vehicle_types = {
+            1: "Carro", 
+            2: "Moto", 
+            3: "Caminhão", 
+            4: "Ônibus", 
+            5: "Van"
+        }
+
+        # Imprimir o dicionário de veículos
+        for key, value in vehicle_types.items():
+            print(f"{key} - {value}")
+
+        # Receber entrada de dados
+        option_type = input("Opção: ").strip()
+
+        # Verificação das opções e entardas
         if not vehicle_name:
             print("Preencha o nome do veículo!")
+            continue
+
+        if not option_type not in range(1, 6):
+            print("Escolha apenas opções entre 1 e 5")
             continue
 
         # Criar um código único para os veículos
@@ -19,14 +38,15 @@ def register_vehicles():
 
         # Adicionar informação a lista de veículos
         registered_vehicles.append({
-            "Código": vehicle_code,
-            "Nome": vehicle_name
+            "Código": vehicle_code, 
+            "Nome": vehicle_name,
+            "Tipo": option_type
         })
 
         # Informações de cadastro
         print()
         print("Veículo cadastrado com sucesso!")
-        break # Finalizar loop e voltar ao menu inicial
+        break  # Finalizar loop e voltar ao menu inicial
 
 
 # FUNÇÃO PARA LISTAR VEÍCULOS
@@ -54,7 +74,7 @@ def delete_vehicle():
             return
 
         for vehicle in registered_vehicles:
-            if delete_text == vehicle['Nome']:
+            if delete_text == vehicle["Nome"]:
                 registered_vehicles.remove(vehicle)
                 print("Veículo removido!")
                 return
