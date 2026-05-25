@@ -9,8 +9,8 @@ def interface_user():
 
     # Dicionário de opções disponíveis
     options_menu = {
-        1: "Cadastrar veículo",
-        2: "Listar Veículos",
+        1: "Cadastrar veículos",
+        2: "Listar todos veículos",
         3: "Excluir veículos",
         4: "Sair do sistema"
     }
@@ -20,7 +20,7 @@ def interface_user():
         print(f"{key} - {value}")
 
     # Receber e retorna a entrada de dados
-    user_menu = input("Opção: ").strip()
+    user_menu = input("Opção selecionada: ").strip()
     return user_menu
 
 
@@ -30,7 +30,7 @@ while True:
 
     # Verificar campo vazio
     if not user_menu:
-        print("Preencha os campos!")
+        print("Preencha os campos obrigatórios!")
         continue
 
     # Verificar a entrada apenas com números
@@ -39,12 +39,12 @@ while True:
 
         # Verificar número informado
         if option not in range(1, 5):
-            print("Escolha apenas opções entre 1 e 4")
+            print("Escolha apenas as opções entre 1 e 4, tente novamente!")
             continue
 
         # Sair do sistema se entrada for igual a '4'
         if option == 4:
-            print("Saindo do sistema...")
+            print("Fechando o sistema, aguarde um pouco...")
             break
 
         # Dicionário para as funções
@@ -58,4 +58,4 @@ while True:
         options_menu[option]()
 
     except ValueError:
-        print("Preencha apenas com números informados em tela")
+        print("Preencha apenas com as opções informados em tela!")
