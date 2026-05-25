@@ -9,7 +9,7 @@ def register_vehicles():
         print("=" * 10 + " CADASTRO DE VEÍCULO " + "=" * 10)
 
         # Variáveis de dados dos veículos
-        vehicle_name = input("Nome: ").strip()
+        vehicle_name = input("Nome: ").strip().title()
         vehicle_types = {
             1: "Carro", 
             2: "Moto", 
@@ -26,12 +26,14 @@ def register_vehicles():
         option_type = input("Opção selecionada: ").strip()
 
         # Verificação das opções e entardas
-        if not vehicle_name:
-            print("Preencha o nome do veículo antes de continuar!")
+        if not option_type.isdigit():
+            print("Digite apenas números!")
             continue
 
-        if not option_type not in range(1, 6):
-            print("Escolha apenas as opções entre 1 e 5, tente novamente!")
+        option_type = int(option_type)
+
+        if option_type not in range(1, 6):
+            print("Escolha apenas entre 1 e 5!")
             continue
 
         # Criar um código único para os veículos
@@ -41,7 +43,7 @@ def register_vehicles():
         registered_vehicles.append({
             "Código": vehicle_code, 
             "Nome": vehicle_name,
-            "Tipo": option_type
+            "Tipo": vehicle_types[option_type]
         })
 
         # Informações de cadastro
