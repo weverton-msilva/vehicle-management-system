@@ -8,6 +8,7 @@ def register_vehicles():
         print()
         print("=" * 10 + " CADASTRO DE VEÍCULO " + "=" * 10)
 
+        # Variáveis de dados dos veículos
         vehicle_name = input("Nome: ").strip()
         vehicle_types = {
             1: "Carro", 
@@ -21,16 +22,16 @@ def register_vehicles():
         for key, value in vehicle_types.items():
             print(f"{key} - {value}")
 
-        # Receber entrada de dados
-        option_type = input("Opção: ").strip()
+        # Receber entrada do tipo de veículo
+        option_type = input("Opção selecionada: ").strip()
 
         # Verificação das opções e entardas
         if not vehicle_name:
-            print("Preencha o nome do veículo!")
+            print("Preencha o nome do veículo antes de continuar!")
             continue
 
         if not option_type not in range(1, 6):
-            print("Escolha apenas opções entre 1 e 5")
+            print("Escolha apenas as opções entre 1 e 5, tente novamente!")
             continue
 
         # Criar um código único para os veículos
@@ -46,7 +47,8 @@ def register_vehicles():
         # Informações de cadastro
         print()
         print("Veículo cadastrado com sucesso!")
-        break  # Finalizar loop e voltar ao menu inicial
+        break  # Finalizar loop e voltar ao menu inici
+        al
 
 
 # FUNÇÃO PARA LISTAR VEÍCULOS
@@ -58,7 +60,7 @@ def list_vehicles():
         print("Nenhum veículo cadastrado ainda!")
     else:
         for vehicle in registered_vehicles:
-            print(f"Código: {vehicle['Código']:<5} Nome: {vehicle['Nome']}")
+            print(f"Código: {vehicle['Código']:<5} Nome: {vehicle['Nome']:<10} Tipo: {vehicle['Tipo']}")
 
 
 # FUNÇÃO PARA EXCLUIR VEÍCULO
@@ -74,9 +76,9 @@ def delete_vehicle():
             return
 
         for vehicle in registered_vehicles:
-            if delete_text == vehicle["Nome"]:
+            if delete_text.lower() == vehicle["Nome"].lower():
                 registered_vehicles.remove(vehicle)
-                print("Veículo removido!")
+                print(f"Veículo removido: {vehicle['Nome']}")
                 return
 
         print("Veículo não encontrado!")
